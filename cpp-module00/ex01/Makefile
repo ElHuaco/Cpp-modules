@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/10 10:54:04 by aleon-ca          #+#    #+#              #
-#    Updated: 2021/02/17 10:17:15 by aleon-ca         ###   ########.fr        #
+#    Created: 2021/02/17 10:21:10 by aleon-ca          #+#    #+#              #
+#    Updated: 2021/02/17 12:19:24 by aleon-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = megaphone.cpp
+SRCS = main.cpp ContactClass.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = megaphone
+NAME = crappy_phonebook
 
 FLAGS = -Wall -Wextra -Werror
 CLANG = clang++ $(FLAGS)
