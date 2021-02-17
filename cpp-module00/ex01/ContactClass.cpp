@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:36:51 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/17 12:34:18 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/17 13:39:24 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,25 @@ void contact::display_info(void) const
 	std::cout << this->favorite_meal << std::endl;
 	std::cout << this->underwear_color << std::endl;
 	std::cout << this->darkest_secret << std::endl;
+	return ;
+}
+
+void contact::display_short_info(void) const
+{
+	if (this->first_name.size() > 10)
+		std::cout << this->first_name.substr(0, 8) << ".";
+	else
+		std::cout << this->first_name;
+	std::cout << "|";
+	if (this->last_name.size() > 10)
+		std::cout << this->last_name.substr(0, 8) << ".";
+	else
+		std::cout << this->last_name;
+	std::cout << "|";
+	if (this->nickname.size() > 10)
+		std::cout << this->nickname.substr(0, 8) << ".";
+	else
+		std::cout << this->nickname;
+	std::cout << std::endl;
 	return ;
 }

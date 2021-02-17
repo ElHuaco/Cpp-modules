@@ -6,23 +6,31 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 10:27:49 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/17 12:57:27 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/17 13:50:35 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ContactClass.hpp"
 #include <string>
 #include <iostream>
+#include <iomanip>
 
 static void	search_contact_in_phonebook(contact *phonebook)
 {
 	int			i;
-	//Print contenidos phonebook;
+	std::string	j;
+
+	i = -1;
+	while (phonebook[++i].first_name.compare("") != 0)
+	{
+		std::cout << (int)(i + 1) << "|";
+		phonebook[i].display_short_info();
+	}
 	std::cout << "SELECT INDEX FOR CONTACT INFO: ";
-	std::cin << i;
-	if ((i < 1) || (i > 8))
+	std::cin >> j;
+	if (!(isdigit(j[0])) || (j[0] < '1') || (j[0] > '8') || (j[0] > i + '0'))
 		return ;
-	phonebook[i - 1].display_info();
+	phonebook[j[0] - '0' - 1].display_info();
 	return ;
 }
 

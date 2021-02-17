@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:30:30 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/17 12:52:09 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/17 13:18:37 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class	contact
 
 		void		fill_info(void);
 		void		display_info(void) const;
+		void		display_short_info(void) const;
 
 		std::string	first_name;
 		std::string	last_name;
