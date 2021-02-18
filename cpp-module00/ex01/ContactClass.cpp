@@ -6,11 +6,12 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:36:51 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/17 13:39:24 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/18 09:55:15 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include "ContactClass.hpp"
 
 contact::contact(void)
@@ -23,34 +24,35 @@ contact::~contact(void)
 	return;
 }
 
-void contact::fill_info(void)
+void		contact::fill_info(void)
 {
+	std::cin.ignore();
 	std::cout << "First name: ";
-	std::cin >> this->first_name;
+	std::getline(std::cin, this->first_name);
 	std::cout << "Last name: ";
-	std::cin >> this->last_name;
+	std::getline(std::cin, this->last_name);
 	std::cout << "Nickname: ";
-	std::cin >> this->nickname;
+	std::getline(std::cin, this->nickname);
 	std::cout << "Login: ";
-	std::cin >> this->login;
+	std::getline(std::cin, this->login);
 	std::cout << "Postal address: ";
-	std::cin >> this->postal_address;
+	std::getline(std::cin, this->postal_address);
 	std::cout << "e-mail address: ";
-	std::cin >> this->email_address;
+	std::getline(std::cin, this->email_address);
 	std::cout << "Phone number: ";
-	std::cin >> this->phone_number;
+	std::getline(std::cin, this->phone_number);
 	std::cout << "Birthday date: ";
-	std::cin >> this->birthday_date;
+	std::getline(std::cin, this->birthday_date);
 	std::cout << "Favorite meal: ";
-	std::cin >> this->favorite_meal;
+	std::getline(std::cin, this->favorite_meal);
 	std::cout << "Underwear color: ";
-	std::cin >> this->underwear_color;
+	std::getline(std::cin, this->underwear_color);
 	std::cout << "Darkest secret: ";
-	std::cin >> this->darkest_secret;
+	std::getline(std::cin, this->darkest_secret);
 	return ;
 }
 
-void contact::display_info(void) const
+void		contact::display_info(void) const
 {
 	std::cout << this->first_name << std::endl;
 	std::cout << this->last_name << std::endl;
@@ -66,22 +68,27 @@ void contact::display_info(void) const
 	return ;
 }
 
-void contact::display_short_info(void) const
+static void display_short_info_str(std::string str)
 {
-	if (this->first_name.size() > 10)
-		std::cout << this->first_name.substr(0, 8) << ".";
+	if (str.size() > 10)
+	{
+		std::cout << std::setw(9);
+		std::cout << str.substr(0, 9) << ".";
+	}
 	else
-		std::cout << this->first_name;
+	{
+		std::cout << std::setw(10);
+		std::cout << str;
+	}
+}
+
+void		contact::display_short_info(void) const
+{
+	display_short_info_str(this->first_name);
 	std::cout << "|";
-	if (this->last_name.size() > 10)
-		std::cout << this->last_name.substr(0, 8) << ".";
-	else
-		std::cout << this->last_name;
+	display_short_info_str(this->last_name);
 	std::cout << "|";
-	if (this->nickname.size() > 10)
-		std::cout << this->nickname.substr(0, 8) << ".";
-	else
-		std::cout << this->nickname;
+	display_short_info_str(this->nickname);
 	std::cout << std::endl;
 	return ;
 }
