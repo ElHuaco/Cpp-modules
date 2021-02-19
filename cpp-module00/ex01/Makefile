@@ -6,7 +6,7 @@
 #    By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 10:21:10 by aleon-ca          #+#    #+#              #
-#    Updated: 2021/02/17 12:19:24 by aleon-ca         ###   ########.fr        #
+#    Updated: 2021/02/19 11:47:51 by aleon-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = main.cpp ContactClass.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = crappy_phonebook
+NAME = crappy_phonebook.out
 
 FLAGS = -Wall -Wextra -Werror
 CLANG = clang++ $(FLAGS)
