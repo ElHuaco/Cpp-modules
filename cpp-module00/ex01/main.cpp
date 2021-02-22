@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 10:27:49 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/18 10:04:56 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/22 08:42:42 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	search_contact_in_phonebook(contact *phonebook)
 
 	std::cout.setf(std::ios::right, std::ios::adjustfield);
 	i = -1;
-	while ((++i < 8) && (phonebook[i].first_name.compare("") != 0))
+	while ((++i < 8) && (phonebook[i].get_first_name().compare("") != 0))
 	{
 		std::cout << std::setw(10);
 		std::cout << (int)(i + 1) << "|";
@@ -45,7 +45,7 @@ static void	add_contact_to_phonebook(contact *phonebook)
 	i = -1;
 	while (++i < 8)
 	{
-		if (!phonebook[i].first_name.compare(""))
+		if (!phonebook[i].get_first_name().compare(""))
 		{
 			phonebook[i].fill_info();
 			break;
