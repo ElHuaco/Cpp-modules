@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:12:53 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/23 14:28:36 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/23 17:15:10 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		main(int argc, char **argv)
 		std::cerr << "replace: Error. I/O operation failed." << std::endl;
 		return (1);
 	}
-	std::string	buff;
+	std::string	buff = "";
 	inputfile.ignore(std::numeric_limits<std::streamsize>::max());//extracts max chars
 	std::streamsize filelength = inputfile.gcount(); //Nº char last input operation
 	inputfile.clear();   //Since ignore will have set eof.
@@ -52,11 +52,12 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	else
-		inputfile >> buff;
+		while (inputfile.peek() != EOF)
+			buff += (char)inputfile.get();
+	inputfile.close();
 	std::string::size_type pos = 0;
-	//Qid del asunto
-	while ((pos = buff.find(s1, pos)))
-		buff.replace(buff.begin() + pos, buff.begin() + pos + s2.size(), s2);
+	while ((pos = buff.find(s1)) != std::string::npos)
+		buff.replace(pos, s1.length(), s2);
 	std::ofstream	outputfile(filename + ".replace");
 	if (outputfile.good() == false)
 	{
@@ -64,5 +65,6 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	outputfile << buff;
+	outputfile.close();
 	return (0);
 }
