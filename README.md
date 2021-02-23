@@ -3,8 +3,9 @@
   2. [¿Qué es la STL?](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
 - Teoría
   1. M00:
-  	¿Por qué public/private? -> Private data members exist so that the class can have access to them while everything else can't. For instance, a vector has a private data member that stores the size of the vector. If you let this be public, the client could just change this to whatever it wanted, and any functionality that relied on knowing the size would be greatly hindered.
+  	**¿Por qué public/private?** -> Private data members exist so that the class can have access to them while everything else can't. For instance, a vector has a private data member that stores the size of the vector. If you let this be public, the client could just change this to whatever it wanted, and any functionality that relied on knowing the size would be greatly hindered.
 	In general, you want most of your data members to be private, and if you want to give the client access to them, you define get/set functions that can test for valid input before changing the value.
   2. M01:
- 	¿Por qué references en ex05? -> Porque nos ahorramos problemas de Lifetime así, que podrían surgir con los punteros a atributos de instancias terminadas de la clase. _"Lifetime Safety: When you don't dereference a possible invalid pointer"_
-	¿Por qué references en HumanA pero pointers en HumanB? -> la weapon no se crea con el constructor en HumanB, así que no puede ser reference. La weapon sí lo hace en HumanA, así que puede ser reference, que es mejor en este caso por ser constante y tener la misma lifetime (el atributo) que la instancia.
+ 	**¿Por qué references en ex05?** -> Porque nos ahorramos problemas de Lifetime así, que podrían surgir con los punteros a atributos de instancias terminadas de la clase. _"Lifetime Safety: When you don't dereference a possible invalid pointer"_
+	**¿Por qué references en HumanA pero pointers en HumanB?** -> la weapon no se crea con el constructor en HumanB, así que no puede ser reference. La weapon sí lo hace en HumanA, así que puede ser reference, que es mejor en este caso por ser constante y tener la misma lifetime (el atributo) que la instancia.
+	**¿Por qué sólo un "if" en ex08?** -> para usar [arrays de punteros a funciones miembro](https://www.cs.technion.ac.il/users/yechiel/c++-faq/array-memfnptrs.html)
