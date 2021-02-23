@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 10:27:49 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/22 08:42:42 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/23 08:02:10 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,5 @@ int		main(void)
 			add_contact_to_phonebook(phonebook);
 		else
 			std::cout << cmd << " COMMAND NOT FOUND" << std::endl;
-		cmd.clear();
 	}
 }

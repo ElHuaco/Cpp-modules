@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 10:13:54 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/22 13:12:24 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/23 09:52:55 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ zombie::~zombie(void)
 void	zombie::set_type(std::string type)
 {
 	this->_type = type;
+	return;
 }
 
 void	zombie::set_name(std::string name)
 {
 	this->_name = name;
+	return;
 }
 
 std::string zombie::get_name(void) const
