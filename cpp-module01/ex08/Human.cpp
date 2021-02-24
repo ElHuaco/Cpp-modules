@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 18:04:46 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/23 18:57:32 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/24 08:57:59 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,16 @@ void		Human::intimidatingShout(std::string const &target)
 
 void		Human::action(std::string const &action_name, std::string const &target)
 {
-	//Array necesario si sólo podemos usar un "if" statement
+	//Array de punteros a funciones necesario si sólo podemos usar un "if"
+	//	y no cosas del estilo:
+	//	if (action_name == meleeAttack)
+	//		...
+	//	else if (action_name == rangedAttack)
+	//		...
+	//	else
+	//		...
 	typedef void (Human::*method_arr)(std::string const &target);
+
 	method_arr	method_arr_inst[] = {&Human::meleeAttack, &Human::rangedAttack,
 		&Human::intimidatingShout};
 	std::string action_str[] = {"meleeAttack", "rangedAttack",

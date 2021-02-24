@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 09:27:37 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/22 09:51:23 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/24 08:27:30 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ pony::~pony(void)
 	return;
 }
 
-std::string	pony::get_status(void)
+std::string	pony::get_status(void) const
 {
 	return (this->_status);
 }
 
-std::string pony::get_name(void)
+std::string pony::get_name(void) const
 {
 	return  (this->_name);
 }

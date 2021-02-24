@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 12:24:20 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/22 13:26:12 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/24 08:44:18 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,5 @@ int		main(void)
 	ZombieHorde Horda(5);
 	std::cout << "\t******Creemos una horda de 15******" << std::endl;
 	ZombieHorde Horda2(15);
-	std::cout << "Comprobemos que se han liberado y de SEGAULT" << std::endl;
-	int i = -1;
-	while (++i < 15)
-		std::cout << (Horda2.get_first_zombie() + i)->get_name() << std::endl;
 	return  (0);
 }

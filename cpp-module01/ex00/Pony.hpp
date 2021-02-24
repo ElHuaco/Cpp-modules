@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 09:26:15 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/22 09:53:44 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/24 08:27:09 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ class	pony
 		pony(void);
 		pony(std::string name);
 		~pony(void);
-		std::string	get_status(void);
-		std::string get_name(void);
+		std::string	get_status(void) const;
+		std::string get_name(void) const;
 		static pony	*ponyOnTheHeap(std::string name);
 		static void	ponyOnTheStack(std::string name);
 	private:

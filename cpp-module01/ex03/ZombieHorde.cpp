@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 11:41:24 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/22 13:21:15 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/24 08:43:06 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ ZombieHorde::ZombieHorde(int N)
 
 ZombieHorde::~ZombieHorde(void)
 {
-	delete []this;
+	delete []this->_first_zombie;
 	return;
 }
 
