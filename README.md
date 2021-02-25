@@ -10,4 +10,5 @@
 	**¿Por qué references en HumanA pero pointers en HumanB?** -> la weapon no se crea con el constructor en HumanB, así que no puede ser reference. La weapon sí lo hace en HumanA, así que puede ser reference, que es mejor en este caso por ser constante y tener la misma lifetime (el atributo) que la instancia.
 	**¿Por qué sólo un "if" en ex08?** -> para usar [arrays de punteros a funciones miembro](https://www.cs.technion.ac.il/users/yechiel/c++-faq/array-memfnptrs.html)
   3. M02:
-  	**¿Por qué no hay class overload de operator<<?** -> You can overload operator<< as a member function. But you can't write a member operator<< that takes an ostream on the left side, and your class on the right side. [Uso overloads operator<<](https://stackoverflow.com/a/9814453/12320117)
+  	[Reglas de operator overloads](https://stackoverflow.com/a/4421708/12320117)
+  	**¿Por qué no hay class overload del operator<< ?** -> You can overload operator<< as a member function. But you can't write a member operator<< that takes an ostream on the left side, and your class on the right side. [Uso overloads operator<<](https://stackoverflow.com/a/9814453/12320117)
