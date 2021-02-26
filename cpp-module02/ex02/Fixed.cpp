@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:44:22 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/02/25 18:55:08 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/02/26 09:58:42 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int const	Fixed::getNumFract(void)
 
 std::ostream	&operator<<(std::ostream &os, Fixed const &rhs)
 {
-	os << rhs.getRawBits() / (float)(1 << Fixed::getNumFract());
+	os << (float)rhs.getRawBits() / (float)(1 << Fixed::getNumFract());
 	return (os);
 }
 
@@ -145,7 +145,7 @@ Fixed		Fixed::operator*(Fixed const &rhs) const
 {
 	Fixed result;
 
-	result.setRawBits(this->getRawBits() * rhs.getRawBits());
+	result.setRawBits(this->getRawBits() * rhs.getRawBits() >> Fixed::getNumFract());
 	return (result);
 }
 
@@ -153,7 +153,7 @@ Fixed		Fixed::operator/(Fixed const &rhs) const
 {
 	Fixed result;
 
-	result.setRawBits(this->getRawBits() / rhs.getRawBits());
+	result.setRawBits(this->getRawBits() / rhs.getRawBits() << Fixed::getNumFract());
 	return (result);
 }
 
@@ -165,8 +165,9 @@ Fixed		&Fixed::operator++(void)
 
 Fixed		Fixed::operator++(int)
 {
+	Fixed copy(*this);
 	this->setRawBits(this->getRawBits() + 1);
-	return (*this);
+	return (copy);
 }
 
 Fixed		&Fixed::operator--(void)
@@ -177,8 +178,9 @@ Fixed		&Fixed::operator--(void)
 
 Fixed		Fixed::operator--(int)
 {
+	Fixed copy(*this);
 	this->setRawBits(this->getRawBits() - 1);
-	return (*this);
+	return (copy);
 }
 
 Fixed		&Fixed::min(Fixed &num1, Fixed &num2)
