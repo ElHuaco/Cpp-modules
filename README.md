@@ -12,3 +12,4 @@
   3. M02:
   	[Reglas de operator overloads](https://stackoverflow.com/a/4421708/12320117)
   	**¿Por qué no hay class overload del operator<< ?** -> You can overload operator<< as a member function. But you can't write a member operator<< that takes an ostream on the left side, and your class on the right side. [Uso overloads operator<<](https://stackoverflow.com/a/9814453/12320117)
+	**Uso istringstreams para parseo aritmetico** -> [idea](https://codereview.stackexchange.com/questions/32155/arithmetic-expression-parsing-and-converting-infix-to-postfix-notation)
