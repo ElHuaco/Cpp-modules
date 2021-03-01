@@ -17,4 +17,4 @@
 	**Niveles de encapsulación del inheritance** -> This access specifier limits the most accessible level for the members inherited from the base class: The members with a more accessible level are inherited with this level instead, while the members with an equal or more restrictive access level keep their restrictive level in the derived class. Por ej., class Animal : protected Pony haría heredar a Pony todos los miembros públicos de Animal como protected.
 	**Herencia de constructores** -> Los constructores de la clase base se llaman cuando se usan los constructores de la clase derivada. Puede configurarse qué constructor de la base se llama usando la misma sintáxis que las listas de inicialización:
 	derived_constructor_name (parameters) : base_constructor_name (parameters) {...}.
-	**Inheritance Múltiple** ->
+	**Inheritance Múltiple** -> Como suena.
