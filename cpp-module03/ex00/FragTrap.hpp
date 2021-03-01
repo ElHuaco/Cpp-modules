@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:02:34 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/01 12:57:05 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/01 15:40:58 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ class FragTrap
 {
 	public:
 		FragTrap(void);
-		FrapTrap(std::string name);
+		FragTrap(std::string name);
 		FragTrap(FragTrap const &rhs);
 		~FragTrap(void);
 
-		FrapTrap	&operator=(FragTrap const &rhs);
+		FragTrap	&operator=(FragTrap const &rhs);
 
 		void		rangedAttack(std::string const &target);
 		void		meleeAttack(std::string const &target);
@@ -50,17 +50,19 @@ class FragTrap
 		void			setArmor(unsigned int amount);
 		void			setMeleeDMG(unsigned int amount);
 		void			setRangedDMG(unsigned int amount);
+		void			setName(std::string name);
+		void			setInitialValues(void);
 
 	private:
-		unsigned int	_HP = 100;
-		unsigned int	_maxHP = 100;
-		unsigned int	_EP = 100;
-		unsigned int	_maxEP = 100;
-		unsigned int	_level = 1;
+		unsigned int	_HP;
+		unsigned int	_maxHP;
+		unsigned int	_EP;
+		unsigned int	_maxEP;
+		unsigned int	_level;
 		std::string		_name;
-		unsigned int	_meleeDMG = 30;
-		unsigned int	_rangedDMG = 20;
-		unsigned int	_armor = 5;
+		unsigned int	_meleeDMG;
+		unsigned int	_rangedDMG;
+		unsigned int	_armor;
 		static std::string	_funny_attacks[5];
 };
 #endif

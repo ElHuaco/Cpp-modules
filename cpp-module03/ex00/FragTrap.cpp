@@ -6,40 +6,54 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:25:54 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/01 13:20:20 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/01 15:55:51 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : _name(nullptr)
+void		FragTrap::setInitialValues(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	this->_HP = 100;
+	this->_maxHP = 100;
+	this->_EP = 100;
+	this->_maxEP = 100;
+	this->_level = 1;
+	this->_meleeDMG = 30;
+	this->_rangedDMG = 20;
+	this->_armor = 5;
+	return;
+}
+
+FragTrap::FragTrap(void) : _name("Sample")
+{
+	std::cout << "Default FR4G-TP constructor called" << std::endl;
+	this->setInitialValues();
 	return;
 }
 
 FragTrap::FragTrap(std::string name) : _name(name)
 {
-	std::cout << "String constructor called" << std::endl;
+	std::cout << "String FR4G-TP constructor called" << std::endl;
+	this->setInitialValues();
 	return;
 }
 
 FragTrap::FragTrap(FragTrap const &rhs)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy FR4G-TP constructor called" << std::endl;
 	*this = rhs;
 	return;
 }
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "FR4G-TP Destructor called" << std::endl;
 	return;
 }
 
 FragTrap	&FragTrap::operator=(FragTrap const &rhs)
 {
-	std::cout << "Assignation operator called" << std::endl;
 	this->_name = rhs._name;
 	this->_HP = rhs._HP;
 	this->_maxHP = rhs._maxHP;
@@ -133,7 +147,13 @@ void			FragTrap::setRangedDMG(unsigned int amount)
 	return;
 }
 
-std::string _funny_attacks[] = {" shoots an arrow to the knee of ",
+void			FragTrap::setName(std::string name)
+{
+	this->_name = name;
+	return;
+}
+
+std::string FragTrap::_funny_attacks[] = {" shoots an arrow to the knee of ",
 " throws Narsil, Sword of Isildur, Son of Elendil, Son of Amandil, Lord of Andúnië at ",
 " throws an eBic burn to ", " laughs at ", " whips some jumper cables at "};
 
@@ -180,6 +200,7 @@ void			FragTrap::takeDamage(unsigned int amount)
 		this->_HP = 0;
 	else
 		this->_HP -= amount - this->_armor;
+	std::cout << "Ouch! " << this->_name << "'s HP: " << this->_HP << std::endl;
 	return;
 }
 
@@ -189,5 +210,6 @@ void			FragTrap::beRepaired(unsigned int amount)
 		this->_HP = this->_maxHP;
 	else
 		this->_HP += amount;
+	std::cout << "Thanks Mr. Roboto! " << this->_name << "'s HP: " << this->_HP << std::endl;
 	return;
 }
