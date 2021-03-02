@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 10:10:32 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/02 10:31:05 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/02 12:13:33 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,14 @@ void		NinjaTrap::ninjaShoebox(FragTrap &target)
 	std::cout << "FR4G-TP " << target.getName() << ": \"Good, twice the pride, double the fall\"";
 	std::cout << std::endl;
 	this->takeDamage(target.getMeleeDMG());
+	target.takeDamage(this->getMeleeDMG());
+	return;
+}
+
+void		NinjaTrap::ninjaShoebox(ClapTrap &target)
+{
+	std::cout << "N1NJ-TP " << this->getName() << ": \"I diagnose you with death, ";
+	std::cout << target.getName() << "!" << std::endl;
 	target.takeDamage(this->getMeleeDMG());
 	return;
 }

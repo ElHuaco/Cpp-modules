@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 15:30:52 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/02 10:36:24 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/02 12:15:35 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ int		main(void)
 	std::cout << "---------------------------------" << std::endl;
 	FragTrap	a("Doofus");
 	ScravTrap	b("Rick Sanchez");
+	ClapTrap	sample("Arturito");
 	NinjaTrap	c("Darkstar");
 	NinjaTrap	d("Naruto");
 	std::cout << "---------------------------------" << std::endl;
 	c.ninjaShoebox(a);
 	std::cout << "---------------------------------" << std::endl;
 	c.ninjaShoebox(b);
+	std::cout << "---------------------------------" << std::endl;
+	d.ninjaShoebox(sample);
 	std::cout << "---------------------------------" << std::endl;
 	d.ninjaShoebox(c);
 	std::cout << "---------------------------------" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 11:36:33 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/02 11:38:15 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/02 12:21:13 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		SuperTrap::setInitialValues(void)
 	this->setMaxEP(120);
 	this->setLevel(1);
 	this->setMeleeDMG(60);
-	this->setRangedDMG(15);
+	this->setRangedDMG(20);
 	this->setArmor(5);
 	return;
 }

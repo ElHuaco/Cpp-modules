@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 10:03:19 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/02 11:58:25 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/02 12:13:56 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	NinjaTrap : virtual public ClapTrap
 		void		ninjaShoebox(NinjaTrap &target);	
 		void		ninjaShoebox(ScravTrap &target);	
 		void		ninjaShoebox(FragTrap &target);	
+		void		ninjaShoebox(ClapTrap &target);	
 
 		void		setInitialValues(void);
 };

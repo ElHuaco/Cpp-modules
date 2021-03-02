@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:25:54 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/02 10:02:22 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/02 12:22:22 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void			FragTrap::vaulthunter_dot_exe(std::string const &target)
 		this->setEP(this->getEP() - 25);
 		std::cout << "FR4G-TP " << this->getName();
 		std::cout << FragTrap::_funny_attacks[random_number] << target;
-		std::cout << " causing, " << this->getRangedDMG() << " points of damage!";
+		std::cout << ", causing " << this->getRangedDMG() << " points of damage!";
 		std::cout << std::endl;
 		return;
 	}
