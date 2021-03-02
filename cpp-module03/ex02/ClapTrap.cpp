@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 09:08:14 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/02 09:43:56 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/02 12:02:13 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void			ClapTrap::setName(std::string name)
 
 void			ClapTrap::meleeAttack(std::string const &target)
 {
-	std::cout << "FR4G-TP " << this->_name << " attacks " << target;
+	std::cout << "CL4P-TP " << this->_name << " attacks " << target;
 	std::cout << " at melee, causing " << this->_meleeDMG << " points of damage!";
 	std::cout << std::endl;
 	return;
@@ -160,7 +160,7 @@ void			ClapTrap::meleeAttack(std::string const &target)
 
 void			ClapTrap::rangedAttack(std::string const &target)
 {
-	std::cout << "FR4G-TP " << this->_name << " attacks " << target;
+	std::cout << "CL4P-TP " << this->_name << " attacks " << target;
 	std::cout << " at range, causing " << this->_rangedDMG << " points of damage!";
 	std::cout << std::endl;
 	return;
