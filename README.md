@@ -18,3 +18,5 @@
 	**Herencia de constructores** -> Los constructores de la clase base se llaman cuando se usan los constructores de la clase derivada. Puede configurarse qué constructor de la base se llama usando la misma sintáxis que las listas de inicialización:
 	derived_constructor_name (parameters) : base_constructor_name (parameters) {...}.
 	**Inheritance Múltiple** -> Tiene el problema del diamante del [destino.](https://en.wikipedia.org/wiki/Virtual_inheritance)
+  5. M04:
+  	**Link dinámico de métodos con clases abstractas** -> Failure to override a pure virtual function in a derived class, then attempting to instantiate objects of that class, is a compilation error.
