@@ -21,4 +21,4 @@
 	**Inheritance Múltiple** -> Tiene el problema del diamante del [destino.](https://en.wikipedia.org/wiki/Virtual_inheritance)
   5. M04:
   	**Link dinámico de métodos con clases abstractas** -> Failure to override a pure virtual function in a derived class, then attempting to instantiate objects of that class, is a compilation error.
-	**Necesidad de destructores virtuales en clases derivadas** -> [Link](https://stackoverflow.com/a/461224/12320117)
+	**Necesidad de destructores virtuales en clases derivadas** -> [Link](https://stackoverflow.com/a/461224/12320117), To sum up, always make base classes' destructors virtual when they're meant to be manipulated polymorphically.
