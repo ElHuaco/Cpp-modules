@@ -1,50 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Peon.cpp                                           :+:      :+:    :+:   */
+/*   PowerFist.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 10:05:54 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/03 11:31:02 by alejandro        ###   ########.fr       */
+/*   Created: 2021/03/03 11:35:45 by alejandro         #+#    #+#             */
+/*   Updated: 2021/03/03 12:53:46 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Peon.hpp"
+#include "PowerFist.hpp"
 
-Peon::Peon(void) : Victim()
+PowerFist::PowerFist(void) : AWeapon("Power Fist", 8, 50)
 {
 	return;
 }
 
-Peon::Peon(std::string name) : Victim(name)
+PowerFist::PowerFist(PowerFist const &rhs) : AWeapon(rhs)
 {
-	std::cout << "Zog zog." << std::endl;
 	return;
 }
 
-Peon::Peon(Peon const &rhs) : Victim(rhs)
+PowerFist::~PowerFist(void)
 {
-	std::cout << "Zog zog." << std::endl;
 	return;
 }
 
-Peon::~Peon(void)
-{
-	std::cout << "Bleuark..." << std::endl;
-	return;
-}
-
-Peon			&Peon::operator=(Peon const &rhs)
+PowerFist		&PowerFist::operator=(PowerFist const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
 	this->setName(rhs.getName());
+	this->setAPCost(rhs.getAPCost());
+	this->setDamage(rhs.getDamage());
 	return (*this);
 }
 
-void			Peon::getPolymorphed(void) const
+void			PowerFist::attack(void) const
 {
-	std::cout << this->getName() << " has been turned into a pink pony!" << std::endl;
+	std::cout << "* pschhh... SBAM! *" << std::endl;
 	return;
 }

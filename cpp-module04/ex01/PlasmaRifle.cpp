@@ -1,50 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Peon.cpp                                           :+:      :+:    :+:   */
+/*   PlasmaRifle.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 10:05:54 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/03 11:31:02 by alejandro        ###   ########.fr       */
+/*   Created: 2021/03/03 11:27:00 by alejandro         #+#    #+#             */
+/*   Updated: 2021/03/03 12:54:10 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Peon.hpp"
+#include "PlasmaRifle.hpp"
 
-Peon::Peon(void) : Victim()
+PlasmaRifle::PlasmaRifle(void) : AWeapon("Plasma Rifle", 5, 21)
 {
 	return;
 }
 
-Peon::Peon(std::string name) : Victim(name)
+PlasmaRifle::PlasmaRifle(PlasmaRifle const &rhs) : AWeapon(rhs)
 {
-	std::cout << "Zog zog." << std::endl;
 	return;
 }
 
-Peon::Peon(Peon const &rhs) : Victim(rhs)
+PlasmaRifle::~PlasmaRifle(void)
 {
-	std::cout << "Zog zog." << std::endl;
 	return;
 }
 
-Peon::~Peon(void)
-{
-	std::cout << "Bleuark..." << std::endl;
-	return;
-}
-
-Peon			&Peon::operator=(Peon const &rhs)
+PlasmaRifle		&PlasmaRifle::operator=(PlasmaRifle const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
 	this->setName(rhs.getName());
+	this->setAPCost(rhs.getAPCost());
+	this->setDamage(rhs.getDamage());
 	return (*this);
 }
 
-void			Peon::getPolymorphed(void) const
+void			PlasmaRifle::attack(void) const
 {
-	std::cout << this->getName() << " has been turned into a pink pony!" << std::endl;
+	std::cout << "* piouuu piouuu piouuu *" << std::endl;
 	return;
 }

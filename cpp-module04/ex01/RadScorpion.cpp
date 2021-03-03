@@ -1,50 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Peon.cpp                                           :+:      :+:    :+:   */
+/*   RadScorpion.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 10:05:54 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/03 11:31:02 by alejandro        ###   ########.fr       */
+/*   Created: 2021/03/03 11:56:48 by alejandro         #+#    #+#             */
+/*   Updated: 2021/03/03 12:52:29 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Peon.hpp"
+#include "RadScorpion.hpp"
 
-Peon::Peon(void) : Victim()
+RadScorpion::RadScorpion(void) : Enemy(80, "RadScorpion")
 {
+	std::cout << "*click click click*" << std::endl;
 	return;
 }
 
-Peon::Peon(std::string name) : Victim(name)
+RadScorpion::RadScorpion(RadScorpion const &rhs) : Enemy(rhs)
 {
-	std::cout << "Zog zog." << std::endl;
+	std::cout << "*click click click*" << std::endl;
 	return;
 }
 
-Peon::Peon(Peon const &rhs) : Victim(rhs)
+RadScorpion::~RadScorpion(void)
 {
-	std::cout << "Zog zog." << std::endl;
+	std::cout << "* SPROTCH *" << std::endl;
 	return;
 }
 
-Peon::~Peon(void)
-{
-	std::cout << "Bleuark..." << std::endl;
-	return;
-}
-
-Peon			&Peon::operator=(Peon const &rhs)
+RadScorpion		&RadScorpion::operator=(RadScorpion const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	this->setName(rhs.getName());
+	this->setType(rhs.getType());
+	this->setHP(rhs.getHP());
 	return (*this);
-}
-
-void			Peon::getPolymorphed(void) const
-{
-	std::cout << this->getName() << " has been turned into a pink pony!" << std::endl;
-	return;
 }
