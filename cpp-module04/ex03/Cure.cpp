@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:07:04 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/04 16:08:14 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 12:15:29 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Cure::Cure(void) : AMateria("cure")
 	return;
 }
 
-Cure::~Cure(void) : ~AMateria()
+Cure::~Cure(void)
 {
 	return;
 }
@@ -31,7 +31,7 @@ Cure			&Cure::operator=(Cure const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	this->_xp = rhs._xp;
+	this->setXP(rhs.getXP());
 	return (*this);
 }
 

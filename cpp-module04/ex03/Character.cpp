@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:06 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 11:52:10 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 12:16:38 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ Character		&Character::operator=(Character const &rhs)
 {
 	int		i;
 
-	if (this == &rhs);
+	if (this == &rhs)
 		return (*this);
 	i = -1;
 	while (++i < INVENTORY_SIZE)
@@ -60,6 +60,11 @@ Character		&Character::operator=(Character const &rhs)
 	while (++i < INVENTORY_SIZE)
 		this->_inventory[i] = rhs._inventory[i]->clone();
 	return (*this);
+}
+
+std::string const	&Character::getName(void) const
+{
+	return (this->_name);
 }
 
 void			Character::equip(AMateria *m)

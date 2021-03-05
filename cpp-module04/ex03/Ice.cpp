@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:01:08 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/04 16:08:26 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 12:13:58 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Ice::Ice(void) : AMateria("ice")
 	return;
 }
 
-Ice::~Ice(void) : ~AMateria()
+Ice::~Ice(void)
 {
 	return;
 }
@@ -31,7 +31,7 @@ Ice			&Ice::operator=(Ice const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	this->_xp = rhs._xp;
+	this->setXP(rhs.getXP());
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:20 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 11:52:27 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 12:06:53 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ class MateriaSource : public IMateriaSource
 		virtual AMateria	*createMateria(std::string const &type);
 
 	private:
-		AMateria	*_sources[SOURCE_MAX];
+		AMateria	**_sources;
 };
 #endif

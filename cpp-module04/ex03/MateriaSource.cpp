@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:46 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 11:52:47 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 12:11:23 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ MateriaSource::~MateriaSource(void)
 
 MateriaSource		&MateriaSource::operator=(MateriaSource const &rhs)
 {
+	int		i;
+
 	if (this == &rhs)
-		return;
+		return (*this);
 	i = -1;
 	while (++i < SOURCE_MAX)
 		delete this->_sources[i];
@@ -57,6 +59,7 @@ MateriaSource		&MateriaSource::operator=(MateriaSource const &rhs)
 void		MateriaSource::learnMateria(AMateria *m)
 {
 	int		i;
+	int		count;
 
 	if (!m)
 		return;
