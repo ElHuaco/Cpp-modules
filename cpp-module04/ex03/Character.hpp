@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:13:04 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 12:12:52 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 12:48:02 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class	Character : public ICharacter
 		virtual void				unequip(int dx);
 		virtual void				use(int idx, ICharacter &target);
 	
+		AMateria		*getMateria(int idx) const;
+
 	private:
 		Character(void);
 		std::string			_name;

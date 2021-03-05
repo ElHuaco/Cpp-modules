@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:06 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 12:16:38 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 13:43:40 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ Character::~Character(void)
 {
 	int		i;
 
-	i = -1;
 	while (++i < INVENTORY_SIZE)
 		delete this->_inventory[i];
 	delete[] this->_inventory;
@@ -48,7 +47,6 @@ Character::~Character(void)
 Character		&Character::operator=(Character const &rhs)
 {
 	int		i;
-
 	if (this == &rhs)
 		return (*this);
 	i = -1;
@@ -56,9 +54,12 @@ Character		&Character::operator=(Character const &rhs)
 		delete this->_inventory[i];
 	delete[] this->_inventory;
 	this->_inventory = new AMateria*[INVENTORY_SIZE];
+	if (rhs._inventory == 0)
+		return (*this);
 	i = -1;
 	while (++i < INVENTORY_SIZE)
-		this->_inventory[i] = rhs._inventory[i]->clone();
+		if (rhs._inventory[i] != 0)	
+			this->_inventory[i] = rhs._inventory[i]->clone();
 	return (*this);
 }
 
@@ -67,6 +68,12 @@ std::string const	&Character::getName(void) const
 	return (this->_name);
 }
 
+AMateria			*Character::getMateria(int index) const
+{
+	if ((index < 0) || (index >= INVENTORY_SIZE))
+		return (0);
+	return (this->_inventory[index]);
+}
 void			Character::equip(AMateria *m)
 {
 	int		i;
@@ -83,7 +90,7 @@ void			Character::equip(AMateria *m)
 		if (this->_inventory[i] != 0)
 			count++;
 	}
-	if (count == 3)
+	if (count == INVENTORY_SIZE)
 		return;
 	AMateria **temp = new AMateria*[INVENTORY_SIZE];
 	i = -1;
@@ -93,7 +100,7 @@ void			Character::equip(AMateria *m)
 	while (++i < INVENTORY_SIZE)
 		if (this->_inventory[i] != 0)
 			temp[i] = this->_inventory[i];
-	i = 1;
+	i = -1;
 	while (++i < INVENTORY_SIZE)
 	{
 		if (this->_inventory[i] == 0)

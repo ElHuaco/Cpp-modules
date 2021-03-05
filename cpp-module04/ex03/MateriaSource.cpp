@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:46 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 12:11:23 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/05 13:28:45 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,12 @@ MateriaSource		&MateriaSource::operator=(MateriaSource const &rhs)
 		delete this->_sources[i];
 	delete[] this->_sources;
 	this->_sources = new AMateria*[SOURCE_MAX];
+	if (rhs._sources == 0)
+		return (*this);
 	i = -1;
 	while (++i < SOURCE_MAX)
-		this->_sources[i] = rhs._sources[i]->clone();
+		if (rhs._sources[i] != 0)
+			this->_sources[i] = rhs._sources[i]->clone();
 	return (*this);
 }
 
@@ -72,7 +75,7 @@ void		MateriaSource::learnMateria(AMateria *m)
 		if (this->_sources[i] != 0)
 			count++;
 	}
-	if (count == 3)
+	if (count == SOURCE_MAX)
 		return;
 	AMateria **temp = new AMateria*[SOURCE_MAX];
 	i = -1;
