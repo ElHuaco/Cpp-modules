@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:54:36 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 13:48:17 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 08:21:55 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int main(void)
 	std::cout << "============Deep Copy============" << std::endl;
 	std::cout << "Let's assign to a new character with an empty inventory";
 	std::cout << std::endl << " and check that old materias were destroyed." << std::endl;
+	std::cout << std::endl;
 	Character newme("newme");
 	tmp = src->createMateria("ice");
 	newme.equip(tmp);
@@ -107,7 +108,6 @@ int main(void)
 	newme = twome;
 	use_inventory(&newme, bob);
 	std::cout << "Was it deleted? type:" << tmp->getType() << std::endl;
-	newme.~Character();
 
 	delete bob;
 	delete me;

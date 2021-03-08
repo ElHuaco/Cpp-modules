@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:06 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 13:43:40 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 08:21:22 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ Character		&Character::operator=(Character const &rhs)
 		return (*this);
 	i = -1;
 	while (++i < INVENTORY_SIZE)
+	{
 		if (rhs._inventory[i] != 0)	
 			this->_inventory[i] = rhs._inventory[i]->clone();
+		else
+			this->_inventory[i] = 0;
+	}
 	return (*this);
 }
 

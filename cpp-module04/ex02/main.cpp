@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 08:38:24 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/04 11:21:12 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 08:39:56 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,15 @@ int main()
 		cur->meleeAttack();
 	}
 	std::cout << "-----------Assignment Operator------------" << std::endl;
-	std::cout << "Assigning the old squad to the copy-constructed" << std::endl;
-	*nlc = wlc;
+	std::cout << "Assigning squad to empty one" << std::endl;
+	Squad klc;
+	wlc = klc;
+	std::cout << "Were Units deleted?" << std::endl;
 	std::cout << "-----------Entering the loop-------------" << std::endl;
-	for (int i = 0; i < wlc.getCount(); ++i)
+	for (int i = 0; i < nlc->getCount(); ++i)
 	{
 	std::cout << "-----------Marine: " << i << "---------------------" << std::endl;
-		ISpaceMarine* cur = wlc.getUnit(i);
+		ISpaceMarine* cur = nlc->getUnit(i);
 		cur->battleCry();
 		cur->rangedAttack();
 		cur->meleeAttack();
