@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:06 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/08 08:21:22 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 09:11:58 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ Character::Character(std::string const &name) : _name(name)
 
 Character::Character(Character const &other)
 {
+	int		i;
+
+	this->_inventory = new AMateria *[INVENTORY_SIZE];
+	i = -1;
+	while (++i < INVENTORY_SIZE)
+		this->_inventory[i] = 0;
 	*this = other;
 	return;
 }
@@ -49,6 +55,7 @@ Character		&Character::operator=(Character const &rhs)
 	int		i;
 	if (this == &rhs)
 		return (*this);
+	this->_name = rhs._name;
 	i = -1;
 	while (++i < INVENTORY_SIZE)
 		delete this->_inventory[i];

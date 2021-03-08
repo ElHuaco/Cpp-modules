@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 12:28:04 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/03 13:18:02 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 09:37:42 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include "AWeapon.hpp"
 #include "PlasmaRifle.hpp"
 #include "PowerFist.hpp"
+#include "Choppa.hpp"
 #include "Enemy.hpp"
 #include "SuperMutant.hpp"
 #include "RadScorpion.hpp"
+#include "Ork.hpp"
 
 int		main(void)
 {
@@ -74,6 +76,18 @@ int		main(void)
 	smurf.attack(phareka);
 	std::cout << smurf << std::endl;
 	smurf.attack(phareka);
+	std::cout << smurf << std::endl;
+	std::cout << "------------------------------------------" << std::endl;
+	Enemy	*boi = new Ork;
+	Choppa	handaxe;
+	smurf.equip(&handaxe);
+	smurf.attack(boi);
+	std::cout << smurf << std::endl;
+	smurf.attack(boi);
+	std::cout << smurf << std::endl;
+	smurf.attack(boi);
+	std::cout << smurf << std::endl;
+	smurf.attack(boi);
 	std::cout << smurf << std::endl;
 	std::cout << "------------------------------------------" << std::endl;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:52:46 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/05 13:28:45 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 08:49:01 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ MateriaSource::MateriaSource(void)
 
 MateriaSource::MateriaSource(MateriaSource const &other)
 {
+	int		i;
+
+	this->_sources = new AMateria*[SOURCE_MAX];
+	i = -1;
+	while (++i < SOURCE_MAX)
+		this->_sources[i] = 0;
 	*this = other;
 	return;
 }

@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:27 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/03 10:02:37 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 09:24:26 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,4 @@ class	Sorcerer
 };
 
 std::ostream		&operator<<(std::ostream &os, Sorcerer const &rhs);
-
 #endif

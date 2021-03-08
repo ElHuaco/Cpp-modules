@@ -6,11 +6,11 @@
 #    By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/22 09:25:30 by aleon-ca          #+#    #+#              #
-#    Updated: 2021/03/03 08:21:59 by alejandro        ###   ########.fr        #
+#    Updated: 2021/03/08 09:21:24 by alejandro        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Sorcerer.cpp Victim.cpp Peon.cpp
+SRCS = main.cpp Sorcerer.cpp Victim.cpp Peon.cpp Ork.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

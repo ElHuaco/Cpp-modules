@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 11:54:36 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/08 08:21:55 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/08 09:46:23 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,22 @@ int main(void)
 	me->use(42, *bob);
 	std::cout << std::endl;
 	std::cout << "============Deep Copy============" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Let's copy construct a new Character" << std::endl;
+	std::cout << " with another that has a Cure equipped." << std::endl;
+	Character you("you");
+	tmp = src->createMateria("cure");
+	you.equip(tmp);
+	Character threeme(you);
+	use_inventory(&threeme, bob);
+	std::cout << std::endl;
 	std::cout << "Let's assign to a new character with an empty inventory";
 	std::cout << std::endl << " and check that old materias were destroyed." << std::endl;
-	std::cout << std::endl;
-	Character newme("newme");
-	tmp = src->createMateria("ice");
-	newme.equip(tmp);
-	use_inventory(&newme, bob);
 	Character twome("twome");
-	newme = twome;
-	use_inventory(&newme, bob);
+	you = twome;
+	use_inventory(&you, bob);
 	std::cout << "Was it deleted? type:" << tmp->getType() << std::endl;
+	std::cout << std::endl;
 
 	delete bob;
 	delete me;
