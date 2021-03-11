@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 11:00:10 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/10 11:45:49 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/11 10:03:01 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,10 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat::Bureaucrat(std::string const &name, int grade) :
 	_name(name), _grade(grade)
 {
-	try
-	{
-		if (grade < 1)
-			throw GradeTooHighException();
-		else if (grade > 150)
-			throw GradeTooLowException();
-	}
-	catch (Bureaucrat::GradeTooHighException & e)
-	{
-		std::cout << e.what() << std::endl;
-		this->~Bureaucrat();
-	}
-	catch (Bureaucrat::GradeTooLowException & e)
-	{
-		std::cout << e.what() << std::endl;
-		this->~Bureaucrat();
-	}
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
 	return;
 }
 
@@ -67,32 +54,16 @@ int					Bureaucrat::getGrade(void) const
 
 void				Bureaucrat::promote(void)
 {
-	try
-	{
-		if (this->_grade == 1)
-			throw GradeTooHighException();
-	}	
-	catch (Bureaucrat::GradeTooHighException & e)
-	{
-		std::cout << e.what() << std::endl;
-		return;
-	}
+	if (this->_grade == 1)
+		throw GradeTooHighException();	
 	this->_grade -= 1;
 	return;
 }
 
 void				Bureaucrat::demote(void)
 {
-	try
-	{
-		if (this->_grade == 150)
-			throw GradeTooLowException();
-	}
-	catch (Bureaucrat::GradeTooLowException & e)
-	{
-		std::cout << e.what() << std::endl;
-		return;
-	}
+	if (this->_grade == 150)
+		throw GradeTooLowException();
 	this->_grade += 1;
 	return;
 }

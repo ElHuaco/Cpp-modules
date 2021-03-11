@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 11:00:10 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 10:10:14 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/10 12:50:28 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,23 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat::Bureaucrat(std::string const &name, int grade) :
 	_name(name), _grade(grade)
 {
-	if (grade < 1)
-		throw GradeTooHighException();
-	else if (grade > 150)
-		throw GradeTooLowException();
+	try
+	{
+		if (grade < 1)
+			throw GradeTooHighException();
+		else if (grade > 150)
+			throw GradeTooLowException();
+	}
+	catch (Bureaucrat::GradeTooHighException & e)
+	{
+		std::cout << e.what() << std::endl;
+		this->~Bureaucrat();
+	}
+	catch (Bureaucrat::GradeTooLowException & e)
+	{
+		std::cout << e.what() << std::endl;
+		this->~Bureaucrat();
+	}
 	return;
 }
 
@@ -49,26 +62,57 @@ int					Bureaucrat::getGrade(void) const
 
 void				Bureaucrat::promote(void)
 {
-	if (this->_grade == 1)
-		throw GradeTooHighException();	
+	try
+	{
+		if (this->_grade == 1)
+			throw GradeTooHighException();
+	}	
+	catch (Bureaucrat::GradeTooHighException & e)
+	{
+		std::cout << e.what() << std::endl;
+		return;
+	}
 	this->_grade -= 1;
 	return;
 }
 
 void				Bureaucrat::demote(void)
 {
-	if (this->_grade == 150)
-		throw GradeTooLowException();
+	try
+	{
+		if (this->_grade == 150)
+			throw GradeTooLowException();
+	}
+	catch (Bureaucrat::GradeTooLowException & e)
+	{
+		std::cout << e.what() << std::endl;
+		return;
+	}
 	this->_grade += 1;
 	return;
 }
 
 void				Bureaucrat::signForm(Form &form) const
 {
-	if (form.getGradeSign() < this->_grade)
-		throw Bureaucrat::GradeTooLowException();
-	else if (form.isSigned() == true)
-		throw Form::FormAlreadySignedException();
+	try
+	{
+		if (form.getGradeSign() < this->_grade)
+			throw Bureaucrat::GradeTooLowException();
+		else if (form.isSigned() == true)
+			throw Form::FormAlreadySignedException();
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << this->_name << " cannot sign " << form.getName() << " because ";
+		std::cout << e.what() << std::endl;
+		return;
+	}
+	catch (Form::FormAlreadySignedException &e)
+	{
+		std::cout << this->_name << " cannot sign " << form.getName() << " because ";
+		std::cout << e.what() << std::endl;
+		return;
+	}
 	std::cout << this->_name << " signs " << form.getName() << "." << std::endl;
 	form.setSigned(true);
 	return;

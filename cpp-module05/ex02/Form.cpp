@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 12:06:36 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 10:11:04 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/10 12:49:39 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,23 @@ Form::~Form(void)
 Form::Form(std::string const &name, int const gradeSign, int const gradeExec) :
 	_name(name), _isSigned(false), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
-	if ((gradeSign < 1) || (gradeExec < 1))
-		throw Bureaucrat::GradeTooHighException();
-	else if ((gradeSign > 150) || (gradeExec > 150))
-		throw Bureaucrat::GradeTooLowException();
+	try
+	{
+		if ((gradeSign < 1) || (gradeExec < 1))
+			throw Bureaucrat::GradeTooHighException();
+		else if ((gradeSign > 150) || (gradeExec > 150))
+			throw Bureaucrat::GradeTooLowException();
+	}
+	catch (Bureaucrat::GradeTooHighException & e)
+	{
+		std::cout << e.what() << std::endl;
+		this->~Form();
+	}
+	catch (Bureaucrat::GradeTooLowException & e)
+	{
+		std::cout << e.what() << std::endl;
+		this->~Form();
+	}
 	return;
 }
 
