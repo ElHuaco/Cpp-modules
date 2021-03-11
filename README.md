@@ -25,5 +25,6 @@
 	**Deep copy vs Shallow copy** -> When designing classes that handle dynamically allocated memory, memberwise (shallow) copying can get us in a lot of trouble! This is because shallow copies of a pointer just copy the address of the pointer -- it does not allocate any memory or copy the contents being pointed to!  A deep copy allocates memory for the copy and then copies the actual value, so that the copy lives in distinct memory from the source.
   6. M05:
  	**Clases nested** -> [Link](https://en.cppreference.com/w/cpp/language/nested_types)
+	**Throw termina la función** -> [Link](https://stackoverflow.com/a/16854349/12320117)
 	**¿Qué significa throw() en la declaración de una función?** -> Que no va a tirar ella misma exceptions. Esto se usa en las funciones que tratan exceptions, para que no tiren ellas mismas otra.
 	**Exceptions en constructores** -> [Link](http://www.gotw.ca/publications/mill13.htm)
