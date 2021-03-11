@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 11:30:24 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 13:39:40 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/11 16:26:54 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,37 +22,45 @@ int		main(void)
 	srand(time(NULL));
 	Bureaucrat		A1("joe", 148);
 	Bureaucrat		A2("genny", 3);
-	A1.demote();
-	A1.demote();
-	std::cout << A1 << std::endl;
-	A2.promote();
-	A2.promote();
-	std::cout << A2 << std::endl;
-	std::cout << std::endl;	
 	Intern	someRandomIntern;
 
 	OfficeBlock		ob(&someRandomIntern, &A1, &A2);
 
-	//TODO: un ejemplo para cada uno de los 5 exceptions
+	std::cout << "======Exception on intern form creation=======" << std::endl;
 	try
 	{
-		ob.doBureaucracy("shrubbery creation", "Venus");
+		ob.doBureaucracy("shrubberyyyyyyy creation", "Venus");
 	}
 	catch (Intern::InternDidNotFindException & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	catch (Form::FormAlreadySignedException & e)
+	std::cout << std::endl;
+	std::cout << "==========Exception on signer grade==========" << std::endl;
+	try
 	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (Form::FormNotSignedException & e)
-	{
-		std::cout << e.what() << std::endl;
+		ob.doBureaucracy("shrubbery creation", "Venus");
 	}
 	catch (Bureaucrat::GradeTooLowException & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+	std::cout << "=========Exception on executor grade========" << std::endl;
+	while (A1.getGrade() > 25)
+		A1.promote();
+	while (A2.getGrade() <= 5)
+		A2.demote();
+	try
+	{
+		ob.doBureaucracy("presidential pardon", "Pepe");
+	}
+	catch (Bureaucrat::GradeTooLowException & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "================Correct Use================" << std::endl;
+	ob.doBureaucracy("robotomy request", "Bender");
 	return (0);
 }
