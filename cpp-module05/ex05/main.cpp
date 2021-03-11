@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 11:30:24 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 18:03:45 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/11 18:13:34 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ int	main(void)
 	srand(time(NULL));
 	int	i = -1;
 	CentralBureaucracy		UAM;
-	Bureaucrat				**bureaucrat_arr = new Bureaucrat*[20];
-	while (++i < 20)
+	Bureaucrat				**bureaucrat_arr = new Bureaucrat*[30];
+	while (++i < 30)
 		bureaucrat_arr[i] = new Bureaucrat(name_arr[rand() % 11], rand() % 149 + 1);
 	i = -1;
-	while (++i < 20)
+	while (++i < 30)
 		UAM.feedBureaucrat(*(bureaucrat_arr[i]));
 	i = -1;
 	while (++i < 100)
 		UAM.queueUp(target_arr[rand() % 9]);
 	UAM.doBureaucracy();
 	i = -1;
-	while (++i < 20)
+	while (++i < 30)
 		delete bureaucrat_arr[i];
 	delete[] bureaucrat_arr;
 	return (0);
