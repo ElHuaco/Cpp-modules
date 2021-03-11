@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 11:00:10 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 10:52:10 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/11 19:05:24 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,38 @@ void				Bureaucrat::demote(void)
 
 void				Bureaucrat::signForm(Form &form) const
 {
-	if (form.getGradeSign() < this->_grade)
-		throw Bureaucrat::GradeTooLowException();
-	else if (form.isSigned() == true)
-		throw Form::FormAlreadySignedException();
-	std::cout << this->_name << " signs " << form.getName() << "." << std::endl;
-	form.setSigned(true);
+	bool	canSign = true;
+
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (Bureaucrat::GradeTooLowException & e)
+	{
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " could not sign " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ") ";
+		std::cout << e.what() << std::endl;
+		canSign = false;
+	}
+	catch (Form::FormAlreadySignedException &e)
+	{
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " could not sign " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ") ";
+		std::cout << e.what() << std::endl;
+		canSign = false;
+	}
+	if (canSign)
+	{
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " signs " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ").";
+		std::cout << std::endl;
+		form.setSigned(true);
+	}
 	return;
+
 }
 
 void				Bureaucrat::executeForm(Form const &form) const
@@ -84,19 +109,25 @@ void				Bureaucrat::executeForm(Form const &form) const
 	}
 	catch(Bureaucrat::GradeTooLowException & e)
 	{
-		std::cout << this->_name << " could not execute " << form.getName();
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " could not execute " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ") ";
 		std::cout << ". " << e.what() << std::endl;
 		canExec = false;
 	}
 	catch (Form::FormNotSignedException & e)
 	{
-		std::cout << this->_name << " could not execute " << form.getName();
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " could not execute " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ") ";
 		std::cout << ". " << e.what() << std::endl;
 		canExec = false;
 	}
 	if (canExec)
 	{
-		std::cout << this->_name << " executes " << form.getName() << ".";
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " executes " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ").";
 		std::cout << std::endl;
 		form.execute(*this);
 	}

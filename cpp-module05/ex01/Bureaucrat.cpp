@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 11:00:10 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 10:10:14 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/11 18:56:30 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,36 @@ void				Bureaucrat::demote(void)
 
 void				Bureaucrat::signForm(Form &form) const
 {
-	if (form.getGradeSign() < this->_grade)
-		throw Bureaucrat::GradeTooLowException();
-	else if (form.isSigned() == true)
-		throw Form::FormAlreadySignedException();
-	std::cout << this->_name << " signs " << form.getName() << "." << std::endl;
-	form.setSigned(true);
+	bool	canSign = true;
+
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (Bureaucrat::GradeTooLowException & e)
+	{
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " could not sign " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ") ";
+		std::cout << e.what() << std::endl;
+		canSign = false;
+	}
+	catch (Form::FormAlreadySignedException &e)
+	{
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " could not sign " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ") ";
+		std::cout << e.what() << std::endl;
+		canSign = false;
+	}
+	if (canSign)
+	{
+		std::cout << this->_name << " Grade (" << this->_grade << ")";
+		std::cout << " signs " << form.getName();
+		std::cout << " (s.g. " << form.getGradeSign() << ", e.g " << form.getGradeExec() << ").";
+		std::cout << std::endl;
+		form.setSigned(true);
+	}
 	return;
 }
 

@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 12:08:58 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 12:39:58 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/11 19:08:21 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ Form		*Intern::makeForm(std::string const &name, std::string const &target)
 		"presidential pardon"};
 	for (int i = -1; i < 3; ++i)
 		if (name == form_str[i])
+		{
+			std::cout << "The intern found a form for " << name << std::endl;
 			return (creator_arr_inst[i](target));
+		}
 	throw InternDidNotFindException();
 }

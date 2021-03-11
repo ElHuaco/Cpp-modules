@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 12:06:36 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/11 10:49:02 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/11 18:59:27 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void				Form::setSigned(bool answer)
 
 void			Form::beSigned(Bureaucrat const &signer)
 {
-	signer.signForm(*this);
+	if (this->_gradeSign < signer.getGrade())
+		throw Bureaucrat::GradeTooLowException();
+	else if (this->_isSigned == true)
+		throw Form::FormAlreadySignedException();
 	return;
 }
 
