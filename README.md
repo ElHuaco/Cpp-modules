@@ -26,3 +26,4 @@
   6. M05:
  	**Clases nested** -> [Link](https://en.cppreference.com/w/cpp/language/nested_types)
 	**¿Qué significa throw() en la declaración de una función?** -> Que no va a tirar ella misma exceptions. Esto se usa en las funciones que tratan exceptions, para que no tiren ellas mismas otra.
+	**Exceptions en constructores** -> [Link](http://www.gotw.ca/publications/mill13.htm)
