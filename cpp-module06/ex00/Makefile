@@ -6,7 +6,7 @@
 #    By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/22 09:25:30 by aleon-ca          #+#    #+#              #
-#    Updated: 2021/03/12 13:48:35 by alejandro        ###   ########.fr        #
+#    Updated: 2021/03/12 19:34:57 by alejandro        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,22 @@ fclean:		clean
 re:			fclean all
 
 test:		re
+	./$(NAME) 42
+	./$(NAME) -42
 	./$(NAME) 0
+	./$(NAME) 0.0f
 	./$(NAME) 420.042f
+	./$(NAME) -420.042f
+	./$(NAME) inf
+	./$(NAME) -inf
+	./$(NAME) inff
+	./$(NAME) -inff
 	./$(NAME) nan
+	./$(NAME) -nan
+	./$(NAME) nanf
+	./$(NAME) -nanf
 	./$(NAME) 0.000000000000000000000000000000000000000000000000000000000000123455689090909
-	./$(NAME) 127
 	./$(NAME) B
+	./$(NAME) B0000B
 
 .PHONY:		all clean fclean re
