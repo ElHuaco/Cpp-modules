@@ -35,4 +35,6 @@
 	- **C++ Upcast, Downcast** -> static_cast < type * > (ptr). No admite clases sin relación.
 	- **C++ abstract Downcasts** -> dynamic_cast < type &/* > (var). Para downcasts de clases con polimorfismo. Comprobado al ejecutar.
 	- **C++ reinterpret_cast** -> hace Type Reinterpretation, Upcast y Downcast.
-	- **C++ const_cast** -> hace Type Qualifier Reinterpretation. 
+	- **C++ const_cast** -> hace Type Qualifier Reinterpretation.
+	- **C++ cast operators** -> definidos en la clase para el compilador cuando se hagan casteos a los atributos.
+	- **"explicit"** -> impide que se llame a este constructor si hay un casteo implícito que podría usarlo, en una función por ej.
