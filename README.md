@@ -33,3 +33,5 @@
 	**Casts según Inheritance** -> La inheritance en C++ introduce una nueva jerarquía. Los Type Reinterpretations sobre ésta se llaman Upcast (hacia más concreto) y Downcast (hacia la base).
 	**C++ Type conversions** -> static_cast < type > (var)
 	**C++ Upcast, Downcast** -> static_cast < type * > (ptr). No admite clases sin relación.
+	**C++ abstract Downcasts** -> dynamic_cast < type &/* > (var). Para downcasts de clases con polimorfismo. Comprobado al ejecutar.
+	**C++ reinterpret_cast** -> hace Type Reinterpretation, Upcast y Downcast.
