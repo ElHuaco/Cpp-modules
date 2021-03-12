@@ -28,3 +28,8 @@
 	**Throw termina la función** -> [Link](https://stackoverflow.com/a/16854349/12320117)
 	**¿Qué significa throw() en la declaración de una función?** -> Que no va a tirar ella misma exceptions. Esto se usa en las funciones que tratan exceptions, para que no tiren ellas mismas otra.
 	**Exceptions en constructores** -> [Link](http://www.gotw.ca/publications/mill13.htm)
+  7. M06:
+  	**Casts en C** -> Teníamos Type Conversions (Cast), Type Reinterpretations (Identity Cast), Type Qualifier Reinterpretations (Identity Cast + qualifier cast).
+	**Casts según Inheritance** -> La inheritance en C++ introduce una nueva jerarquía. Los Type Reinterpretations sobre ésta se llaman Upcast (hacia más concreto) y Downcast (hacia la base).
+	**C++ Type conversions** -> static_cast < type > (var)
+	**C++ Upcast, Downcast** -> static_cast < type * > (ptr). No admite clases sin relación.
