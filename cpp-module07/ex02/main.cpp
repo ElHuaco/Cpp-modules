@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 10:50:06 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/03/16 12:38:07 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/03/16 16:44:27 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ int		main(void)
 {
 	std::cout << "============INT TEST===============" << std::endl;
 	int *c = new int[5];
+	std::cout << "---------Default Array-------------" << std::endl;
 	my::iter(c, 5, print);
+	std::cout << "----------Array Class--------------" << std::endl;
 	Array<int> A1(5);
 	my::iter(A1, A1.size(), print);
 	std::cout << "-------------Copia cambiada-----------" << std::endl;
@@ -76,7 +78,9 @@ int		main(void)
 	my::iter(A1, A1.size(), print);
 	std::cout << "============STR TEST===============" << std::endl;
 	std::string *s = new std::string[5];
+	std::cout << "---------Default Array-------------" << std::endl;
 	my::iter(s, 5, print);
+	std::cout << "----------Array Class--------------" << std::endl;
 	Array<std::string> A3(5);
 	my::iter(A3, A3.size(), print);
 	std::cout << "-------------Copia cambiada-----------" << std::endl;
@@ -87,7 +91,9 @@ int		main(void)
 	my::iter(A3, A3.size(), print);
 	std::cout << "==========AWESOME TEST=============" << std::endl;
 	Awesome *a = new Awesome[5];
+	std::cout << "---------Default Array-------------" << std::endl;
 	my::iter(a, 5, print);
+	std::cout << "----------Array Class--------------" << std::endl;
 	Array<Awesome> A2(5);
 	my::iter(A2, A2.size(), print);
 	std::cout << "-------------Copia cambiada-----------" << std::endl;
