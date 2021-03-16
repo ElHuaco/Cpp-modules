@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 10:29:15 by aleon-ca          #+#    #+#             */
-/*   Updated: 2021/03/16 11:36:34 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2021/03/16 12:29:29 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,36 @@
 # define ARRAY_HPP
 
 # include <exception>
+# include <iostream>
 
 template <typename T> class Array
 {
+	private:
+		T				*_elements;
+		unsigned int	_size;
+
 	public:
 		Array(void) : _size(0)
 		{
-			this->_elements = new T*[1];
-			this->_elements[0] = new T();
+			this->_elements = new T[1];
 			return;
 		}
 		
 		Array(unsigned int size) : _size(size)
 		{
-			unsigned int	i;
-		
-			this->_elements = new T*[size];
-			i = 0;
-			while (i < size)
-			{
-				this->_elements[i] = new T();
-				++i;
-			}
+			this->_elements = new T[size];
 			return;
 		}
 		
 		Array(Array const &other)
 		{
+			this->_elements = new T[1];
 			*this = other;
 			return;
 		}
 		
 		~Array(void)
 		{
-			unsigned int	i;
-		
-			i = 0;
-			while (i < this->_size)
-			{
-				delete this->_elements[i];
-				++i;
-			}
 			delete[] this->_elements;
 			return;
 		}
@@ -63,37 +52,28 @@ template <typename T> class Array
 		{
 			if (this == &rhs)
 				return (*this);
-			unsigned int i = 0;
-			while (i < this->_size)
-			{
-				delete this->_elements[i];
-				++i;
-			}
 			delete[] this->_elements;
-			this->_elements = new T*[rhs._size];
-			i = 0;
+			this->_size = rhs._size;
+			this->_elements = new T[rhs._size];
+			unsigned int i = 0;
 			while (i < rhs._size)
 			{
-				this->_elements[i] = rhs._elements[i];
+				this->_elements[i] = T(rhs._elements[i]);
 				++i;
 			}
 			return (*this);
 		}
-		
+
 		T				&operator[](unsigned int n)
 		{
 			if (n >= this->_size)
 				throw std::exception();
-			return (*(this->_elements[n]));
+			return (this->_elements[n]);
 		}
 		
 		unsigned int	size(void) const
 		{
 			return (this->_size);
 		}
-
-	private:
-		T				**_elements;
-		unsigned int	_size;
 };
 #endif
