@@ -43,4 +43,5 @@
   	- **Implementaciones de miembros de clases template** -> El compilador sólo puede generar el código de la clase resultante de instanciar con cierto tipo usando el archivo, así que o bien se incluye el archivo de implementación al final del header o se declara en línea. [Link](https://stackoverflow.com/a/495056/12320117)
   	- **Diferencia entre template < typename > y template < class >** -> Al usar template templates, instaciaciones explícitas o usar tipos que dependan de otros parámetros template. [Link](https://stackoverflow.com/a/2024173/12320117)
   9. M08:
-  	- **Referencia STL** -> [Link](http://cplusplus.com/reference/stl/)
+  	- **Containers de la STL** -> Containers replicate structures very commonly used in programming: dynamic arrays (vector), queues (queue), stacks (stack), heaps (priority_queue), linked lists (list), trees (set), associative arrays (map)... They are implemented as class templates, which allows a great flexibility in the types supported as elements. [Link](http://cplusplus.com/reference/stl/)
+  	- **< algorithm >** -> The header <algorithm> defines a collection of functions especially designed to be used on ranges of elements, that is, any sequence of objects that can be accessed through iterators or pointers, such as an array or an instance of some of the STL containers. [Link](http://cplusplus.com/reference/algorithm/)
