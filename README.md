@@ -42,3 +42,5 @@
   8. M07:
   	- **Implementaciones de miembros de clases template** -> El compilador sólo puede generar el código de la clase resultante de instanciar con cierto tipo usando el archivo, así que o bien se incluye el archivo de implementación al final del header o se declara en línea. [Link](https://stackoverflow.com/a/495056/12320117)
   	- **Diferencia entre template < typename > y template < class >** -> Al usar template templates, instaciaciones explícitas o usar tipos que dependan de otros parámetros template. [Link](https://stackoverflow.com/a/2024173/12320117)
+  9. M08:
+  	- **Referencia STL** -> [Link](http://cplusplus.com/reference/stl/)
