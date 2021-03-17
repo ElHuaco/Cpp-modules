@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 11:51:34 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/17 12:43:04 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/17 16:16:06 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <cstdlib>
 
 # define SIZE1 3
-# define SIZE2 10000
+# define SIZE2 1000000
 
 static void	print(int const &number)
 {
