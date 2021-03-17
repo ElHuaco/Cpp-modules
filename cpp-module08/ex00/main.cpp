@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 09:45:06 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/17 10:07:13 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/17 10:12:30 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int		main(void)
 	if (temp != vec.end())
 		print(*temp);
 	else
-		std::cout << std::endl;
+		std::cout << "Didn't find -42." << std::endl;
 	std::cout << "Finding 2134 in the container... ";
 	temp = easyfind(vec, 2134);
 	if (temp != vec.end())
 		print(*temp);
 	else
-		std::cout << std::endl;
+		std::cout << "Didn't find 2134." << std::endl;
 	std::cout << std::endl;
 	std::cout << "========LIST CONTAINER=========" << std::endl;
 	std::list<int>		lst;
@@ -53,13 +53,13 @@ int		main(void)
 	if (temp2 != lst.end())
 		print(*temp2);
 	else
-		std::cout << std::endl;
+		std::cout << "Didn't find -42." << std::endl;
 	std::cout << "Finding 2134 in the container... ";
 	temp2 = easyfind(lst, 2134);
 	if (temp2 != lst.end())
 		print(*temp2);
 	else
-		std::cout << std::endl;
+		std::cout << "Didn't find 2134." << std::endl;
 	std::cout << std::endl;
 
 	return (0);
