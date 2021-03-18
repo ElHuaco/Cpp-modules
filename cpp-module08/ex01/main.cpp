@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 11:51:34 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/17 16:16:06 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/18 10:27:55 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,8 @@ int		main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << "==========Better Assignment operator=========" << std::endl;
+	Span S4(S1);
+	for_each(S4.begin(), S4.end(), print);
 	return (0);
 }

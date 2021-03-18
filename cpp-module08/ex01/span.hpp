@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 10:56:15 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/17 12:35:33 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/18 12:25:23 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ class Span : public std::vector<int>
 {
 	public:
 		Span(unsigned int N);
-		~Span(void);
+		Span(Span const &other);
+		virtual ~Span(void);
+
+		Span		&operator=(Span const &rhs);
 
 		void		addNumber(int const &number); 
 		void		addNumber(unsigned int const &number);
@@ -37,8 +40,6 @@ class Span : public std::vector<int>
 
 	private:
 		Span(void);
-		Span(Span const &other);
-		Span		&operator=(Span const &rhs);
 		unsigned int	_nCalls;
 		unsigned int	_nCallsMax;
 };

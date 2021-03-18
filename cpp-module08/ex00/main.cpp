@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 09:45:06 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/17 10:12:30 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/18 11:09:38 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,5 @@ int		main(void)
 	else
 		std::cout << "Didn't find 2134." << std::endl;
 	std::cout << std::endl;
-
 	return (0);
 }

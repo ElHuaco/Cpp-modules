@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 18:48:38 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/17 19:09:30 by alejandro        ###   ########.fr       */
+/*   Created: 2021/03/18 12:13:17 by alejandro         #+#    #+#             */
+/*   Updated: 2021/03/18 12:34:31 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,26 @@
 # define MUTANTSTACK_HPP
 
 # include <stack>
+# include <deque>
 # include <algorithm>
-# include <iterator>
 
-template <typename T> class	MutantStack : std::list<typename T>
+template <typename T> class MutantStack : public std::stack<T>
 {
 	public:
-			MutantStack(void);
-			MutantStack(MutantStack const &other);
-			~MutantStack(void);
+		typedef typename std::stack<T>::container_type::iterator iterator;
 
-			MutantStack		&operator=(MutantStack const &rhs);
+		MutantStack(void) : std::stack<T>() {return;}
+		MutantStack(MutantStack const &other) : std::stack<T>(other) {return;}
+		virtual ~MutantStack(void) {return;}
 
-			class	MutantIterator
-				: public std::iterator<std::bidirectional_iterator_tag, typename T>
-			{
-				//Implementar aquí?
-			};
+		MutantStack		&operator=(MutantStack &rhs)
+		{
+			MutantStack temp(rhs);
+			std::swap(*this, temp);
+			return (*this);
+		}
 
-			MutantIterator	&begin(void) const;
-			MutantIterator	&end(void) const;
+		iterator		begin(void) {return (std::stack<T>::c.begin());}
+		iterator		end(void) {return (std::stack<T>::c.end());}
 };
 #endif

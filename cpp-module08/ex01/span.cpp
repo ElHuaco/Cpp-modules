@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 11:08:08 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/17 16:14:59 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/18 10:26:26 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ Span::Span(unsigned int N) : std::vector<int>::vector<int>(),
 Span::~Span(void)
 {
 	return;
+}
+
+Span::Span(Span const &other) : std::vector<int>::vector<int>(other),
+	_nCalls(other._nCalls), _nCallsMax(other._nCallsMax)
+{
+	return;
+}
+
+Span		&Span::operator=(Span const &rhs)
+{
+	Span temp(rhs);
+	std::swap(*this, temp);
+	return (*this);
 }
 
 void		Span::addNumber(int const &number)
