@@ -6,23 +6,16 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:48:30 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/18 17:27:16 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/18 18:03:51 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #include <queue>
+#include <vector>
 #include <algorithm>
 #include <iostream>
-#include "Instruction.hpp"
-#include "IncrementAddress.hpp"
-#include "IncrementValue.hpp"
-#include "DecrementAddress.hpp"
-#include "DecrementValue.hpp"
-#include "OutputAddressValue.hpp"
-#include "SkipLoopExp.hpp"
-#include "RestartLoop.hpp"
-#include "StoreValue.hpp"
+#include <fstream>
+#include "InstructionConstArray.hpp"
 
 # define TAPE_SIZE 30000
 
@@ -45,28 +38,32 @@ int		main(int argc, char **argv)
 		std::cerr << "MindOpen: Error. I/O operation failed." << std::endl;
 		return (EXIT_FAILURE);
 	}
-	std::string	buff = "";
-	inputfile.ignore(std::numeric_limits<std::streamsize>::max());//extracts max chars
-	std::streamsize filelength = inputfile.gcount(); //Nº char last input operation
-	inputfile.clear();   //Since ignore will have set eof.
-	inputfile.seekg(0, std::ios_base::beg);//Next char extracted will be at beggining
-	if (filelength > buff.max_size())
+	typedef Instruction	*(&instructionConstArray)(void);
+	instructionConstArray instructionConstructor[] = {
+		&CreateIncAdd, &CreateIncVal, &CreateDecAdd, &CreateDecVal,
+		&CreateOutput, &CreateSkipLoop, &CreateRestartLoop, &CreateStore};
+	char instructionChar[] = {">", "+", "<", "-", ".", "[", "]", ","};
+	std::queue<Instruction> instructionQueue;
+	while (inputfile.peek() != EOF)
 	{
-		std::cerr << "MindOpen: Error. Maximum file size exceeded by ";
-		std::cerr << filelength - buff.max_size() << " bytes." << std::endl;
-		return (EXIT_FAILURE);
+		for (unsigned int i = 0; i < 8; i++)
+			if (static_cast<char>(inputfile.peek()) == instructionChar[i])
+				instructionQueue.push(*instructionConstructor[i]());
+		inputfile.get();
 	}
-	else
-		while (inputfile.peek() != EOF)
-			buff += static_cast<char>(inputfile.get());
-// Cómo mover el ptr de instrucciones?
-// Parseo?
-// Cómo se va modificando la ristra de 0s?
-// Descifrar instrucciones y guardarlas en la queue.
-//	std::queue<Instruction> instructionQueue;
 	inputfile.close();
-// Ejecutar cada instrucción en la cola.
-//	std::vector<char> tape(TAPE_SIZE, 0);
-
+	std::vector<char> tape(TAPE_SIZE, 0);
+	std::vector<char>::iterator ptr = tape.begin();
+	while (ptr != tape.end())
+	{
+		instructionQueue.front().execute(ptr);
+		//Cómo hacemos pop si las [, ] no deben hacerlo siempre?
+	}
 	return (EXIT_SUCCESS);
 }
+// Cómo mover el ptr de instrucciones?
+//  -> Esto es simplemente avanzar en la queue
+// Parseo?
+//  -> Se ignorar chars no del lenguaje
+// Descifrar instrucciones y guardarlas en la queue.
+
