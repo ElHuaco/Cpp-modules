@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:48:30 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/18 18:03:51 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/18 19:04:10 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
+#include "Instructions.hpp"
 #include "InstructionConstArray.hpp"
 
 # define TAPE_SIZE 30000
@@ -42,28 +43,48 @@ int		main(int argc, char **argv)
 	instructionConstArray instructionConstructor[] = {
 		&CreateIncAdd, &CreateIncVal, &CreateDecAdd, &CreateDecVal,
 		&CreateOutput, &CreateSkipLoop, &CreateRestartLoop, &CreateStore};
-	char instructionChar[] = {">", "+", "<", "-", ".", "[", "]", ","};
+	char instructionChar[] = {
+		">", "+", "<", "-",
+		".", "[", "]", ","};
 	std::queue<Instruction> instructionQueue;
 	while (inputfile.peek() != EOF)
 	{
 		for (unsigned int i = 0; i < 8; i++)
+		{
 			if (static_cast<char>(inputfile.peek()) == instructionChar[i])
+			{
 				instructionQueue.push(*instructionConstructor[i]());
+				break;
+			}
+		}
 		inputfile.get();
 	}
 	inputfile.close();
 	std::vector<char> tape(TAPE_SIZE, 0);
-	std::vector<char>::iterator ptr = tape.begin();
-	while (ptr != tape.end())
+	std::vector<char>::iterator dataPtr = tape.begin();
+	std::queue<Instruction>::const_iterator instructionPtr = instructionQueue.begin();
+	while (instructionPtr != instructionQueue.end())
 	{
-		instructionQueue.front().execute(ptr);
-		//Cómo hacemos pop si las [, ] no deben hacerlo siempre?
+		instructionPtr->execute(ptr);
+		if (dynamic_cast<SkipLoopExp *>(instructionPtr) != nullptr
+			&& !(*dataPtr))
+		{
+			while (dynamic_cast<RestartLoop *>(instructionPtr) == nullptr)
+				++instructionPtr;
+		}
+		if (dynamic_cast<RestartLoop *>(instructionPtr) != nullptr
+			&& (*dataPtr))
+		{
+			while (dynamic_cast<SkipLoopExp *>(instructionPtr) == nullptr)
+				--instructionPtr;
+		}
+		++instructionPtr;
 	}
 	return (EXIT_SUCCESS);
 }
 // Cómo mover el ptr de instrucciones?
 //  -> Esto es simplemente avanzar en la queue
 // Parseo?
-//  -> Se ignorar chars no del lenguaje
+//  -> Se ignoran chars no del lenguaje
 // Descifrar instrucciones y guardarlas en la queue.
 

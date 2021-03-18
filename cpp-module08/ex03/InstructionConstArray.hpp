@@ -6,19 +6,11 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:48:21 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/18 17:51:13 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/18 18:56:41 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Instruction.hpp"
-#include "IncrementAddress.hpp"
-#include "IncrementValue.hpp"
-#include "DecrementAddress.hpp"
-#include "DecrementValue.hpp"
-#include "OutputAddressValue.hpp"
-#include "SkipLoopExp.hpp"
-#include "RestartLoop.hpp"
-#include "StoreValue.hpp"
+#include "Instructions.hpp"
 
 Instruction		*CreateIncVal(void)
 {
