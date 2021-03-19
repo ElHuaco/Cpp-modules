@@ -6,11 +6,11 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:48:30 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/19 12:44:37 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/19 13:17:37 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <queue>
+#include <deque>
 #include <algorithm>
 #include <iostream>
 #include <fstream>
@@ -18,25 +18,15 @@
 
 # define TAPE_SIZE 30000
 
-static void	print(Instruction *inst)
-{
-	std::cout << inst->getName();
-	return;
-}
-
 static void	CheckSkipLoop(std::deque<Instruction *>::iterator &instructionPtr)
 {
 	int		nestedLevel = 0;
 	++instructionPtr;
-	while ((dynamic_cast<RestartLoop *>(*instructionPtr) == nullptr)
-		|| (nestedLevel))
+	while (((*instructionPtr)->getName() != "]") || (nestedLevel))
 	{
-//		std::cout << "checkSkipLoop: (Order, nestedLevel) = (";
-//		std::cout << (*instructionPtr)->getName() << ", ";
-//		std::cout << nestedLevel << ")." << std::endl;
-		if (dynamic_cast<SkipLoopExp *>(*instructionPtr) != nullptr)
+		if ((*instructionPtr)->getName() == "[")
 			++nestedLevel;
-		else if (dynamic_cast<RestartLoop *>(*instructionPtr) != nullptr)
+		else if ((*instructionPtr)->getName() == "]")
 			--nestedLevel;
 		++instructionPtr;
 	}
@@ -47,15 +37,11 @@ static void	CheckRestartLoop(std::deque<Instruction *>::iterator &instructionPtr
 {
 	int		nestedLevel = 0;
 	--instructionPtr;
-	while ((dynamic_cast<SkipLoopExp *>(*instructionPtr) == nullptr)
-		|| (nestedLevel))
+	while (((*instructionPtr)->getName() != "[") || (nestedLevel))
 	{
-//		std::cout << "checkRestartLoop: (Order, nestedLevel) = (";
-//		std::cout << (*instructionPtr)->getName() << ", ";
-//		std::cout << nestedLevel << ")." << std::endl;
-		if (dynamic_cast<RestartLoop *>(*instructionPtr) != nullptr)
+		if ((*instructionPtr)->getName() == "]")
 			++nestedLevel;
-		else if (dynamic_cast<SkipLoopExp *>(*instructionPtr) != nullptr)
+		else if ((*instructionPtr)->getName() == "[")
 			--nestedLevel;
 		--instructionPtr;
 	}
@@ -101,35 +87,18 @@ int		main(int argc, char **argv)
 		inputfile.get();
 	}
 	inputfile.close();
-//	std::cout << "Queue created..." << std::endl;
-//	for_each(instructionQueue.begin(), instructionQueue.end(), print);
-//	std::cout << std::endl;
 	char	tape[TAPE_SIZE];
 	char	*dataPtr = tape;
 	std::deque<Instruction *>::iterator
 		instructionPtr = instructionQueue.begin();
-//	std::cout << "Starting execution..." << std::endl;
 	while (instructionPtr != instructionQueue.end())
 	{
-//		std::cout << "New iterarion" << std::endl;
 		(*instructionPtr)->execute(&dataPtr);
-//		print(*instructionPtr);
-		if ((dynamic_cast<SkipLoopExp *>(*instructionPtr) != nullptr)
-			&& !(*dataPtr))
-		{
-//			std::cout << "Skipping loop..." << std::endl;
+		if (((*instructionPtr)->getName() == "[") && !(*dataPtr))
 			CheckSkipLoop(instructionPtr);
-//			std::cout << std::endl;
-		}
-		if ((dynamic_cast<RestartLoop *>(*instructionPtr) != nullptr)
-			&& (*dataPtr))
-		{
-//			std::cout << "Restarting loop..." << std::endl;
+		if (((*instructionPtr)->getName() == "]") && (*dataPtr))
 			CheckRestartLoop(instructionPtr);
-//			std::cout << std::endl;
-		}
 		++instructionPtr;
-//		std::cout << "instructionPtr advanced and ready for next iteration." << std::endl;
 	}
 	return (EXIT_SUCCESS);
 }
