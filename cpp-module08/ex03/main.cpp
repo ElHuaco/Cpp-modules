@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:48:30 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/19 11:38:22 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/19 12:44:37 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,43 @@ static void	print(Instruction *inst)
 	return;
 }
 
+static void	CheckSkipLoop(std::deque<Instruction *>::iterator &instructionPtr)
+{
+	int		nestedLevel = 0;
+	++instructionPtr;
+	while ((dynamic_cast<RestartLoop *>(*instructionPtr) == nullptr)
+		|| (nestedLevel))
+	{
+//		std::cout << "checkSkipLoop: (Order, nestedLevel) = (";
+//		std::cout << (*instructionPtr)->getName() << ", ";
+//		std::cout << nestedLevel << ")." << std::endl;
+		if (dynamic_cast<SkipLoopExp *>(*instructionPtr) != nullptr)
+			++nestedLevel;
+		else if (dynamic_cast<RestartLoop *>(*instructionPtr) != nullptr)
+			--nestedLevel;
+		++instructionPtr;
+	}
+	return;
+}
+
+static void	CheckRestartLoop(std::deque<Instruction *>::iterator &instructionPtr)
+{
+	int		nestedLevel = 0;
+	--instructionPtr;
+	while ((dynamic_cast<SkipLoopExp *>(*instructionPtr) == nullptr)
+		|| (nestedLevel))
+	{
+//		std::cout << "checkRestartLoop: (Order, nestedLevel) = (";
+//		std::cout << (*instructionPtr)->getName() << ", ";
+//		std::cout << nestedLevel << ")." << std::endl;
+		if (dynamic_cast<RestartLoop *>(*instructionPtr) != nullptr)
+			++nestedLevel;
+		else if (dynamic_cast<SkipLoopExp *>(*instructionPtr) != nullptr)
+			--nestedLevel;
+		--instructionPtr;
+	}
+	return;
+}
 int		main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -64,34 +101,32 @@ int		main(int argc, char **argv)
 		inputfile.get();
 	}
 	inputfile.close();
-	std::cout << "Queue created..." << std::endl;
-	for_each(instructionQueue.begin(), instructionQueue.end(), print);
-	std::cout << std::endl;
+//	std::cout << "Queue created..." << std::endl;
+//	for_each(instructionQueue.begin(), instructionQueue.end(), print);
+//	std::cout << std::endl;
 	char	tape[TAPE_SIZE];
 	char	*dataPtr = tape;
 	std::deque<Instruction *>::iterator
 		instructionPtr = instructionQueue.begin();
-	std::cout << "Starting execution..." << std::endl;
+//	std::cout << "Starting execution..." << std::endl;
 	while (instructionPtr != instructionQueue.end())
 	{
 //		std::cout << "New iterarion" << std::endl;
 		(*instructionPtr)->execute(&dataPtr);
-		print(*instructionPtr);
+//		print(*instructionPtr);
 		if ((dynamic_cast<SkipLoopExp *>(*instructionPtr) != nullptr)
 			&& !(*dataPtr))
 		{
 //			std::cout << "Skipping loop..." << std::endl;
-			while (dynamic_cast<RestartLoop *>(*instructionPtr) == nullptr)
-				++instructionPtr;
-			std::cout << std::endl;
+			CheckSkipLoop(instructionPtr);
+//			std::cout << std::endl;
 		}
 		if ((dynamic_cast<RestartLoop *>(*instructionPtr) != nullptr)
 			&& (*dataPtr))
 		{
 //			std::cout << "Restarting loop..." << std::endl;
-			while (dynamic_cast<SkipLoopExp *>(*instructionPtr) == nullptr)
-				--instructionPtr;
-			std::cout << std::endl;
+			CheckRestartLoop(instructionPtr);
+//			std::cout << std::endl;
 		}
 		++instructionPtr;
 //		std::cout << "instructionPtr advanced and ready for next iteration." << std::endl;
