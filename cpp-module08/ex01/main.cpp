@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 11:51:34 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/18 10:27:55 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/19 19:11:43 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ int		main(void)
 	for_each(S1.begin(), S1.end(), print);
 	std::cout << std::endl;
 	std::cout << "========Correct simple addNumber use==========" << std::endl;
-	S1.addNumber(static_cast<int>(rand() % 10 - 5));
-	S1.addNumber(static_cast<int>(rand() % 10 - 5));
-	S1.addNumber(static_cast<int>(rand() % 10 - 5));
+	S1.addNumber((rand() % 10 - 5));
+	S1.addNumber((rand() % 10 - 5));
+	S1.addNumber((rand() % 10 - 5));
 	for_each(S1.begin(), S1.end(), print);
 	std::cout << "Shortest: " << S1.shortestSpan() << std::endl;
 	std::cout << "Longest: " << S1.longestSpan() << std::endl;
 	std::cout << std::endl;
 	std::cout << "========Correct multiple addNumber use========" << std::endl;
 	Span  S2(SIZE2);
-	S2.addNumber(static_cast<unsigned int>(SIZE2));
+	S2.addNumber(0, SIZE2 - 1);
 	std::cout << "Shortest: " << S2.shortestSpan() << std::endl;
 	std::cout << "Longest: " << S2.longestSpan() << std::endl;
 	std::cout << std::endl;

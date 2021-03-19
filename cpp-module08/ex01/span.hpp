@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 10:56:15 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/18 12:25:23 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/19 19:12:39 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Span : public std::vector<int>
 		Span		&operator=(Span const &rhs);
 
 		void		addNumber(int const &number); 
-		void		addNumber(unsigned int const &number);
+		void		addNumber(int from, int to);
 
 		int			shortestSpan(void) const;
 		int			longestSpan(void) const;

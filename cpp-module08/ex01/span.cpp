@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 11:08:08 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/18 10:26:26 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/19 19:12:47 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,15 @@ void		Span::addNumber(int const &number)
 	return;
 }
 
-void		Span::addNumber(unsigned int const &number)
+void		Span::addNumber(int from, int to)
 {
-	unsigned int	i = 0;
-
-	while (i < number)
+	while (from <= to)
 	{
 		if (this->_nCalls >= this->_nCallsMax)
 			throw std::out_of_range("Error: out of range");
 		this->push_back(rand() % INT_MAX);
 		this->_nCalls += 1;
-		++i;
+		++from;
 	}
 	return;
 }
