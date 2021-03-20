@@ -6,17 +6,12 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 11:08:08 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/19 19:12:47 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/20 13:32:13 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "span.hpp"
 #include <iostream>
-
-Span::Span(void) : std::vector<int>::vector<int>()
-{
-	return;
-}
 
 Span::Span(unsigned int N) : std::vector<int>::vector<int>(),
 	_nCalls(0), _nCallsMax(N)
