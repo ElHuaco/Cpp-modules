@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 10:58:12 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/20 12:49:21 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/20 13:16:12 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,22 @@ static void		checkParenthError(Token *token)
 	if ((token->getType() == "ParOpen") || (token->getType() == "ParClose"))
 		throw std::invalid_argument("ex04: error. Wrong parenthesis use");
 	return;
+}
+
+std::ostream	&operator<<(std::ostream &os, std::stack<int> postStack)
+{
+	while (postStack.empty() == false)
+	{
+		os << postStack.top() << " ";
+		postStack.pop();
+	}
+	return (os);
+}
+
+static int		operation(int a, int b, char type)
+{
+	return ((type == '+') * (b + a) + (type == '-') * (b - a)
+		+ (type == '*') * (b * a) + (type == '/') * (b / a));
 }
 
 int		main(int argc, char **argv)
@@ -123,5 +139,33 @@ int		main(int argc, char **argv)
 	for_each(PostfixTokens.begin(), PostfixTokens.end(), checkParenthError);
 	for_each(PostfixTokens.begin(), PostfixTokens.end(), my::print);
 	std::cout << std::endl;
+	std::stack<int>	resultStack;
+	std::deque<Token *>::const_iterator itpost = PostfixTokens.begin();
+	int temp1;
+	int temp2;
+	while (itpost != PostfixTokens.end())
+	{
+		if ((*itpost)->getType() == "Operand")
+		{
+			std::cout << "I Num(" << dynamic_cast<Operand *>(*itpost)->getNum() << ") | OP Push | ";
+			resultStack.push(dynamic_cast<Operand *>(*itpost)->getNum());
+			std::cout << "ST " << resultStack << "]" << std::endl;
+		}
+		else
+		{
+			if (resultStack.size() < 2)
+				throw std::invalid_argument("ex04: error. Wrong expression.");
+			std::cout << "I " << (*itpost)->getType() << " | OP ";
+			std::cout << dynamic_cast<Operator *>(*itpost)->getSubtype() << " | ";
+			temp1 = resultStack.top();
+			resultStack.pop();
+			temp2 = resultStack.top();
+			resultStack.pop();
+			resultStack.push(operation(temp1, temp2, dynamic_cast<Operator *>(*itpost)->getSubtype()));
+			std::cout << "ST " << resultStack << "]" << std::endl;
+		}
+		++itpost;
+	}
+	std::cout << "Result: " << resultStack.top() << std::endl;
 	return(EXIT_SUCCESS);
 }
