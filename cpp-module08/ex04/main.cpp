@@ -6,7 +6,7 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 10:58:12 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/20 13:16:12 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/20 13:20:34 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		main(int argc, char **argv)
 		std::cerr << "ex04: error. Infix expression must contain only digits, spaces, '-', '+', '*', '/' and parenthesis." << std::endl;
 		return (EXIT_FAILURE);
 	}
+/*	TOKEN CONSTRUCTION */
 	std::deque<Token *>	InfixTokens;
 	std::string::const_iterator it = input.begin();
 	while (it != input.end())
@@ -96,6 +97,7 @@ int		main(int argc, char **argv)
 	std::cout << "Tokens: ";
 	for_each(InfixTokens.begin(), InfixTokens.end(), my::print);
 	std::cout << std::endl;
+/*	INFIX TO POSTFIX ALGORITHM */
 	std::stack<Token *> TempStack;
 	std::deque<Token *> PostfixTokens;
 	std::deque<Token *>::const_iterator i = InfixTokens.begin();
@@ -139,6 +141,7 @@ int		main(int argc, char **argv)
 	for_each(PostfixTokens.begin(), PostfixTokens.end(), checkParenthError);
 	for_each(PostfixTokens.begin(), PostfixTokens.end(), my::print);
 	std::cout << std::endl;
+/*	COMPUTE USING THE RESULTING STACK */
 	std::stack<int>	resultStack;
 	std::deque<Token *>::const_iterator itpost = PostfixTokens.begin();
 	int temp1;
