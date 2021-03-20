@@ -6,14 +6,16 @@
 /*   By: alejandroleon <aleon-ca@student.42.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 10:58:12 by alejandro         #+#    #+#             */
-/*   Updated: 2021/03/20 12:38:13 by alejandro        ###   ########.fr       */
+/*   Updated: 2021/03/20 12:49:21 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <deque>
 #include <stack>
+#include <exception>
 #include "Tokens.hpp"
 
 namespace my
@@ -40,6 +42,13 @@ namespace my
 		std::cout << " ";
 	}
 };
+
+static void		checkParenthError(Token *token)
+{
+	if ((token->getType() == "ParOpen") || (token->getType() == "ParClose"))
+		throw std::invalid_argument("ex04: error. Wrong parenthesis use");
+	return;
+}
 
 int		main(int argc, char **argv)
 {
@@ -98,6 +107,8 @@ int		main(int argc, char **argv)
 			{
 				PostfixTokens.push_back(TempStack.top());
 				TempStack.pop();
+				if (TempStack.empty() == true)
+					throw std::invalid_argument("ex04: error. Wrong parenthesis use");
 			}
 			TempStack.pop();
 		}
@@ -109,6 +120,7 @@ int		main(int argc, char **argv)
 		TempStack.pop();
 	}
 	std::cout << "Postfix: ";
+	for_each(PostfixTokens.begin(), PostfixTokens.end(), checkParenthError);
 	for_each(PostfixTokens.begin(), PostfixTokens.end(), my::print);
 	std::cout << std::endl;
 	return(EXIT_SUCCESS);
