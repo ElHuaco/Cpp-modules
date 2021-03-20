@@ -1,0 +1,36 @@
+- Crear Token abstract class, de clases concretas:
+	- Num Token con std::string _type(operand), int _n
+	- Op Token con std::string _type(operator), char _subtype, int _precedence
+	- ParClose, ParOpen Tokens con std::string _type(parclose/paropen)
+- Stack intermedia de operadores y parentesis.
+	- Si es operando, pushear a la queue final.
+
+	- Si es operator, y la stack intermedia está vacía, o tiene
+	un ParOpen en el top, o tiene mayor precedencia que el operator
+	en el top de la stack intermedia, pushear a la stack intermedia.
+
+	- Si es operador, y tiene menor o igual precendia que el operator
+	en el top de la stack intermedia, popea ése a la queue final
+	y vuelve a chequear con el top.
+
+	- Si es un ParOpen, pushea a la stack intermedia.
+	- Si es un ParClose, popea a la queue postfix hasta encontrar
+	un ParOpen. Descarta entonces ambos paréntesis.
+
+	- Al final de la expresión, popea toda la stack intermedia a 
+	la queue postfix.
+
+- Queue final de Tokens en postfix, se lee FIFO para crear la stack del
+resultado:
+	- Si es Num(), push.
+	- Si es Op(), popea dos veces, opera con esos valores y pushea
+	el resultado.
+	- Printear el resultado final, el top de una stack postfix de
+	tamaño 1.
+
+1. main con test básicos
+2. clases tokens
+3. crear queue inicial tokens, test tipos.
+4. bucle stack intermedia, queue final
+	i. chequeo de ParClose sin ParOpen correspondiente
+5. operar stack resultado desde queue final.
